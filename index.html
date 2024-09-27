@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE BUNKERS ADDA</title>
+    <link rel="stylesheet" href="kan2.css">
+    <style>
+		body {
+			font-family: Arial, sans-serif;
+		}
+		
+		.container {
+			width: 80%;
+			margin: 40px auto;
+			padding: 20px;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+        .bill-container {
+			margin-top: 40px;
+		}
+		
+		table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+		
+		th, td {
+			border: 1px solid #ddd;
+			padding: 10px;
+			text-align: left;
+		}
+		
+		th {
+			background-color: #f0f0f0;
+		}
+        .button {
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		
+		.button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+    <div class="container">
+		<center><h1>ಕನ್ನಡಿಗರು <br>THE KANNADIGA'S</h1></center>
+		
+		<div class="bill-container">
+			<h2>Restaurants Billing System</h2>
+			<form onsubmit="return false;">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+                </body>
+            <tr>
+                <td><input type="text" id="Hoskote Biryani" name="Hoskote Biryani" value="Hoskote Biryani"></td>
+                <td><input type="number" id="quantity1" name="quantity1" value="1"></td>
+                <td><input type="number" id="price1" name="price1" value="150.00" readonly></td>
+                <td id="total1">150.00</td>
+            </tr>
+            <tr>
+                <td><input type="text" id="Chicken Sukka" name="" value="Chicken Sukka"></td>
+                <td><input type="number" id="quantity2" name="quantity2" value="1"></td>
+                <td><input type="number" id="price2" name="price2" value="180.00" readonly></td>
+                <td id="total2">180.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">Subtotal:</td>
+                <td id="subtotal">330.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">Tax (10%):</td>
+                <td id="tax">33.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total:</td>
+                <td id="total">363.00</td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td colspan="3">Total (in Rupees):</td>
+                <td id="total-rupees"></td>
+              </tr>
+  
+        </body>
+
+        </table><br>
+        
+		<center><button class="button" onclick="generateBill()" >Generate Bill</button></center>
+    </form>
+</div>
+</div>
+<div>
+	<center><h2>ಎಲ್ಲಾದರು ಇರು, ಎಂತಾದರು ಇರು ಎಂದೆಂದಿಗು ನೀ ಕನ್ನಡವಾಗಿರು ಕನ್ನಡ ಗೋವಿನ ಓ ಮುದ್ದಿನ ಕರು, ಕನ್ನಡತನವೊಂದಿದ್ದರೆ ನೀನಮ್ಮಗೆ ಕಲ್ಪತರು!
+		<br>- ರಾಷ್ಟ್ರಕವಿ ಕುವೆಂಪು💛❤️
+		</h2></center>
+</div>
+
+<script src="script.js" >
+
+	</script>
+</body>
+</html>

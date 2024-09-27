@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Summary</title>
+    <link rel="stylesheet" href="kan.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .container {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .total {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Billing Summary</h1>
+        <div class="total" id="total-amount"></div>
+        <button onclick="window.location.href='index.html'">Back to Billing</button>
+        <button onclick="printBill()">Print Bill</button>
+    </div>
+    <div>
+      <center><h2>ಧನ್ಯವಾದಗಳು</h2></center>
+      <center><p>ಜೀವನದಲ್ಲಿ ತಪ್ಪು ಹೆಜ್ಜೆ ಇಡುವುದು ಸಹಜ ಬೇಗಾ ಎಚ್ಚೆತ್ತುಕೊಳ್ಳುವುದು ಬುದ್ಧಿವಂತಿಕೆ
+         <br>ತಪ್ಪಾದಾಗ ಕೊರಗುವುದಕ್ಕಿಂತ ಮುಂದೆ ತಪ್ಪಾಗದಂತೆ ನಡೆದುಕೊಳ್ಳುವುದು ಉತ್ತಮ...💛❤️</p></center>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const total = getQueryParam('total');
+            if (total) {
+                document.getElementById('total-amount').textContent = 'Total Amount: ₹' + total;
+            } else {
+                document.getElementById('total-amount').textContent = 'No billing information available.';
+            }
+        });
+
+        function printBill() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
