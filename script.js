@@ -1,54 +1,23 @@
-// Function to calculate bill
 function calculateBill() {
-  var subtotal = 0;
-  var tax = 0;
-  var total = 0;
 
-  // Get all table rows
-  var rows = document.querySelectorAll('tbody tr');
+  var qty1 = parseInt(document.getElementById("quantity1").value) || 0;
+  var qty2 = parseInt(document.getElementById("quantity2").value) || 0;
 
-  // Iterate over each row (except last 4 rows)
-  for (var i = 0; i < rows.length - 4; i++) {
-    var row = rows[i];
-    // Get quantity and price inputs
-    var quantity = parseInt(row.querySelector('input[type="number"]').value);
-    var price = parseFloat(row.querySelector('input[type="number"][name^="price"]').value);
-// Calculate total for each item
-var totalItem = quantity * price;
-row.querySelector('td#total' + (i + 1)).textContent = totalItem.toFixed(2);
+  var price1 = parseFloat(document.getElementById("price1").value) || 0;
+  var price2 = parseFloat(document.getElementById("price2").value) || 0;
 
-// Add to subtotal
-subtotal += totalItem;
+  var total1 = qty1 * price1;
+  var total2 = qty2 * price2;
+
+  document.getElementById("total1").textContent = total1.toFixed(2);
+  document.getElementById("total2").textContent = total2.toFixed(2);
+
+  var subtotal = total1 + total2;
+  var tax = subtotal * 0.10;
+  var total = subtotal + tax;
+
+  document.getElementById("subtotal").textContent = subtotal.toFixed(2);
+  document.getElementById("tax").textContent = tax.toFixed(2);
+  document.getElementById("total").textContent = total.toFixed(2);
+  document.getElementById("total-rupees").textContent = "Rs. " + total.toFixed(2);
 }
-
-// Calculate tax and total
-tax = subtotal * 0.1;
-total = subtotal + tax;
-
-// Update subtotal, tax, and total fields
-document.getElementById('subtotal').textContent = subtotal.toFixed(2);
-document.getElementById('tax').textContent = tax.toFixed(2);
-document.getElementById('total').textContent = total.toFixed(2);
-document.getElementById('total-rupees').textContent = `Rs. ${total.toFixed(2)}`;
-}
-
-// Add event listener to calculate button
-document.querySelector('.button').addEventListener('click', calculateBill);
-
-// Update price on quantity change
-document.addEventListener('input', function(event) {
-if (event.target.type === 'number' && event.target.name.startsWith('quantity')) {
-  var quantity = parseInt(event.target.value);
-  var priceInput = event.target.parentNode.parentNode.querySelector('input[type="number"][name^="price"]');
-  var price = parseFloat(priceInput.value);
-  var totalCell = event.target.parentNode.parentNode.querySelector('td[id^="total"]');
-  totalCell.textContent = (quantity * price).toFixed(2);
-
-  calculateBill(); // Update subtotal, tax, and total
-}
-}
-);
-function generateBill(){
-  var total=document.getElementById('total').textContent;
-  window.location.href='billing.html?total='+encodeURIComponent(total);
-};
