@@ -1,54 +1,50 @@
-// Function to calculate bill
 function calculateBill() {
-  var subtotal = 0;
-  var tax = 0;
-  var total = 0;
+  let subtotal = 0;
+  const rows = document.querySelectorAll('tbody tr');
 
-  // Get all table rows
-  var rows = document.querySelectorAll('tbody tr');
+  rows.forEach((row) => {
+    const quantityInput = row.querySelector('input[name^="quantity"]');
+    const priceInput = row.querySelector('input[name^="price"]');
+    const totalCell = row.querySelector('td[id^="total"]');
 
-  // Iterate over each row (except last 4 rows)
-  for (var i = 0; i < rows.length - 4; i++) {
-    var row = rows[i];
-    // Get quantity and price inputs
-    var quantity = parseInt(row.querySelector('input[type="number"]').value);
-    var price = parseFloat(row.querySelector('input[type="number"][name^="price"]').value);
-// Calculate total for each item
-var totalItem = quantity * price;
-row.querySelector('td#total' + (i + 1)).textContent = totalItem.toFixed(2);
+    if (!quantityInput || !priceInput || !totalCell) {
+      return;
+    }
 
-// Add to subtotal
-subtotal += totalItem;
+    const quantity = parseFloat(quantityInput.value) || 0;
+    const price = parseFloat(priceInput.value) || 0;
+    const itemTotal = quantity * price;
+
+    totalCell.textContent = itemTotal.toFixed(2);
+    subtotal += itemTotal;
+  });
+
+  const tax = subtotal * 0.1;
+  const total = subtotal + tax;
+
+  document.getElementById('subtotal').textContent = subtotal.toFixed(2);
+  document.getElementById('tax').textContent = tax.toFixed(2);
+  document.getElementById('total').textContent = total.toFixed(2);
+  document.getElementById('total-rupees').textContent = `Rs. ${total.toFixed(2)}`;
 }
 
-// Calculate tax and total
-tax = subtotal * 0.1;
-total = subtotal + tax;
-
-// Update subtotal, tax, and total fields
-document.getElementById('subtotal').textContent = subtotal.toFixed(2);
-document.getElementById('tax').textContent = tax.toFixed(2);
-document.getElementById('total').textContent = total.toFixed(2);
-document.getElementById('total-rupees').textContent = `Rs. ${total.toFixed(2)}`;
+const calculateButton = document.querySelector('.button');
+if (calculateButton) {
+  calculateButton.addEventListener('click', calculateBill);
 }
 
-// Add event listener to calculate button
-document.querySelector('.button').addEventListener('click', calculateBill);
+document.addEventListener('input', (event) => {
+  const target = event.target;
+  if (!target || target.type !== 'number') return;
 
-// Update price on quantity change
-document.addEventListener('input', function(event) {
-if (event.target.type === 'number' && event.target.name.startsWith('quantity')) {
-  var quantity = parseInt(event.target.value);
-  var priceInput = event.target.parentNode.parentNode.querySelector('input[type="number"][name^="price"]');
-  var price = parseFloat(priceInput.value);
-  var totalCell = event.target.parentNode.parentNode.querySelector('td[id^="total"]');
-  totalCell.textContent = (quantity * price).toFixed(2);
+  if (target.name.startsWith('quantity') || target.name.startsWith('price')) {
+    calculateBill();
+  }
+});
 
-  calculateBill(); // Update subtotal, tax, and total
+window.addEventListener('DOMContentLoaded', calculateBill);
+
+function generateBill() {
+  const totalValue = document.getElementById('total')?.textContent || '0.00';
+  window.location.href = 'billing.html?total=' + encodeURIComponent(totalValue);
 }
-}
-);
-function generateBill(){
-  var total=document.getElementById('total').textContent;
-  window.location.href='billing.html?total='+encodeURIComponent(total);
-};

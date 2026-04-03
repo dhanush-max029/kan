@@ -66,39 +66,39 @@
 							<th>Total</th>
 						</tr>
 					</thead>
-                </body>
-            <tr>
-                <td><input type="text" id="Hoskote Biryani" name="Hoskote Biryani" value="Hoskote Biryani"></td>
-                <td><input type="number" id="quantity1" name="quantity1" value="1"></td>
-                <td><input type="number" id="price1" name="price1" value="150.00" readonly></td>
-                <td id="total1">150.00</td>
-            </tr>
-            <tr>
-                <td><input type="text" id="Chicken Sukka" name="" value="Chicken Sukka"></td>
-                <td><input type="number" id="quantity2" name="quantity2" value="1"></td>
-                <td><input type="number" id="price2" name="price2" value="180.00" readonly></td>
-                <td id="total2">180.00</td>
-            </tr>
-            <tr>
-                <td colspan="3">Subtotal:</td>
-                <td id="subtotal">330.00</td>
-            </tr>
-            <tr>
-                <td colspan="3">Tax (10%):</td>
-                <td id="tax">33.00</td>
-            </tr>
-            <tr>
-                <td colspan="3">Total:</td>
-                <td id="total">363.00</td>
-            </tr>
-            <tr style="font-weight: bold;">
-                <td colspan="3">Total (in Rupees):</td>
-                <td id="total-rupees"></td>
-              </tr>
-  
-        </body>
-
-        </table><br>
+					<tbody>
+						<tr>
+							<td><input type="text" id="item1" name="item1" value="Hoskote Biryani"></td>
+							<td><input type="number" id="quantity1" name="quantity1" value="1" min="0"></td>
+							<td><input type="number" id="price1" name="price1" value="150.00" readonly></td>
+							<td id="total1">150.00</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="item2" name="item2" value="Chicken Sukka"></td>
+							<td><input type="number" id="quantity2" name="quantity2" value="1" min="0"></td>
+							<td><input type="number" id="price2" name="price2" value="180.00" readonly></td>
+							<td id="total2">180.00</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="3">Subtotal:</td>
+							<td id="subtotal">0.00</td>
+						</tr>
+						<tr>
+							<td colspan="3">Tax (10%):</td>
+							<td id="tax">0.00</td>
+						</tr>
+						<tr>
+							<td colspan="3">Total:</td>
+							<td id="total">0.00</td>
+						</tr>
+						<tr style="font-weight: bold;">
+							<td colspan="3">Total (in Rupees):</td>
+							<td id="total-rupees">Rs. 0.00</td>
+						</tr>
+					</tfoot>
+				</table><br>
         
 		<center><button class="button" onclick="generateBill()" >Generate Bill</button></center>
     </form>
@@ -110,7 +110,7 @@
 		</h2></center>
 </div>
 
-<script src="script.js" >
+<script src="./script.js" >
 
 	</script>
 </body>
