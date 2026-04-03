@@ -97,34 +97,29 @@
 							<td><input type="number" id="price5" name="price5" value="25.00" readonly></td>
 							<td id="total5">0.00</td>
 						</tr>
-						<tr>
-							<td><input type="text" id="item6" name="item6" value="Chicken Curry"></td>
-							<td><input type="number" id="quantity6" name="quantity6" value="0" min="0"></td>
-							<td><input type="number" id="price6" name="price6" value="120.00" readonly></td>
-							<td id="total6">0.00</td>
-						</tr>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="3">Subtotal:</td>
-							<td id="subtotal">0.00</td>
-						</tr>
-						<tr>
-							<td colspan="3">Tax (0.3%):</td>
-							<td id="tax">0.00</td>
-						</tr>
-						<tr>
-							<td colspan="3">Total:</td>
-							<td id="total">0.00</td>
-						</tr>
-						<tr style="font-weight: bold;">
-							<td colspan="3">Total (in Rupees):</td>
-							<td id="total-rupees">Rs. 0.00</td>
-						</tr>
-					</tfoot>
-				</table><br>
-        
-		<center><button class="button" onclick="generateBill()" >Generate Bill</button></center>
+				</table>
+				<br>
+				<table>
+					<tr>
+						<td colspan="3">Subtotal:</td>
+						<td id="subtotal">0.00</td>
+					</tr>
+					<tr>
+						<td colspan="3">Tax (0.3%):</td>
+						<td id="tax">0.00</td>
+					</tr>
+					<tr>
+						<td colspan="3">Total:</td>
+						<td id="total">0.00</td>
+					</tr>
+					<tr style="font-weight: bold;">
+						<td colspan="3">Total (in Rupees):</td>
+						<td id="total-rupees"></td>
+					</tr>
+				</table>
+				<br>
+				<center><button class="button" onclick="generateBill()">Generate Bill</button></center>
     </form>
 </div>
 </div>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billing Summary</title>
-    <link rel="stylesheet" href="kan.css">
+    <link rel="stylesheet" href="kan2.css">
+    <!-- ✅ Removed script.js import — it was running calculateBill() here and resetting subtotal/tax to 0 -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -66,7 +67,7 @@
                     <td id="subtotal"></td>
                 </tr>
                 <tr>
-                    <td colspan="3">Tax (1%):</td>
+                    <td colspan="3">Tax (0.3%):</td>
                     <td id="tax"></td>
                 </tr>
                 <tr>
@@ -82,26 +83,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const billData = JSON.parse(localStorage.getItem('billData'));
-            
+
             if (billData && billData.items) {
                 const tbody = document.getElementById('bill-items');
-                
+
                 billData.items.forEach(item => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${item.name}</td>
                         <td>${item.quantity}</td>
-                        <td>₹${item.price.toFixed(2)}</td>
-                        <td>₹${item.total.toFixed(2)}</td>
+                        <td>Rs. ${item.price.toFixed(2)}</td>
+                        <td>Rs. ${item.total.toFixed(2)}</td>
                     `;
                     tbody.appendChild(row);
                 });
-                
-                document.getElementById('subtotal').textContent = '₹' + billData.subtotal.toFixed(2);
-                document.getElementById('tax').textContent = '₹' + billData.tax.toFixed(2);
-                document.getElementById('total-amount').textContent = '₹' + billData.total.toFixed(2);
+
+                // ✅ These now correctly read the values saved by the fixed script.js
+                document.getElementById('subtotal').textContent = `Rs. ${Number(billData.subtotal).toFixed(2)}`;
+                document.getElementById('tax').textContent = `Rs. ${Number(billData.tax).toFixed(2)}`;
+                document.getElementById('total-amount').textContent = `Rs. ${Number(billData.total).toFixed(2)}`;
             } else {
-                document.getElementById('total-amount').textContent = 'No billing information available.';
+                document.getElementById('bill-items').innerHTML = '<tr><td colspan="4">No items in bill</td></tr>';
+                document.getElementById('subtotal').textContent = 'Rs. 0.00';
+                document.getElementById('tax').textContent = 'Rs. 0.00';
+                document.getElementById('total-amount').textContent = 'Rs. 0.00';
             }
         });
 

@@ -83,6 +83,10 @@ tbody tr {
     transition: all 0.3s ease;
 }
 
+tfoot tr {
+    background: white;
+}
+
 tbody tr:nth-child(even) {
     background: rgba(102, 126, 234, 0.05);
 }
