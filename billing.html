@@ -48,26 +48,58 @@
 <body>
     <div class="container">
         <h1>Billing Summary</h1>
-        <div class="total" id="total-amount"></div>
+        <table id="bill-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="bill-items">
+                <!-- Items will be populated here -->
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Subtotal:</td>
+                    <td id="subtotal"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Tax (1%):</td>
+                    <td id="tax"></td>
+                </tr>
+                <tr>
+                    <td colspan="3">Total:</td>
+                    <td id="total-amount"></td>
+                </tr>
+            </tfoot>
+        </table>
         <button onclick="window.location.href='index.html'">Back to Billing</button>
         <button onclick="printBill()">Print Bill</button>
     </div>
-    <div>
-      <center><h2>ಧನ್ಯವಾದಗಳು</h2></center>
-      <center><p>ಜೀವನದಲ್ಲಿ ತಪ್ಪು ಹೆಜ್ಜೆ ಇಡುವುದು ಸಹಜ ಬೇಗಾ ಎಚ್ಚೆತ್ತುಕೊಳ್ಳುವುದು ಬುದ್ಧಿವಂತಿಕೆ
-         <br>ತಪ್ಪಾದಾಗ ಕೊರಗುವುದಕ್ಕಿಂತ ಮುಂದೆ ತಪ್ಪಾಗದಂತೆ ನಡೆದುಕೊಳ್ಳುವುದು ಉತ್ತಮ...💛❤️</p></center>
-    </div>
 
     <script>
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
         document.addEventListener('DOMContentLoaded', function() {
-            const total = getQueryParam('total');
-            if (total) {
-                document.getElementById('total-amount').textContent = 'Total Amount: ₹' + total;
+            const billData = JSON.parse(localStorage.getItem('billData'));
+            
+            if (billData && billData.items) {
+                const tbody = document.getElementById('bill-items');
+                
+                billData.items.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>${item.quantity}</td>
+                        <td>₹${item.price.toFixed(2)}</td>
+                        <td>₹${item.total.toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+                
+                document.getElementById('subtotal').textContent = '₹' + billData.subtotal.toFixed(2);
+                document.getElementById('tax').textContent = '₹' + billData.tax.toFixed(2);
+                document.getElementById('total-amount').textContent = '₹' + billData.total.toFixed(2);
             } else {
                 document.getElementById('total-amount').textContent = 'No billing information available.';
             }

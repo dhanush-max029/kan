@@ -19,7 +19,7 @@ function calculateBill() {
     subtotal += itemTotal;
   });
 
-  const tax = subtotal * 0.1;
+  const tax = subtotal * 0.003;
   const total = subtotal + tax;
 
   document.getElementById('subtotal').textContent = subtotal.toFixed(2);
@@ -46,5 +46,41 @@ window.addEventListener('DOMContentLoaded', calculateBill);
 
 function generateBill() {
   const totalValue = document.getElementById('total')?.textContent || '0.00';
-  window.location.href = 'billing.html?total=' + encodeURIComponent(totalValue);
+  
+  // Collect selected items
+  const selectedItems = [];
+  const rows = document.querySelectorAll('tbody tr');
+  
+  rows.forEach((row) => {
+    const quantityInput = row.querySelector('input[name^="quantity"]');
+    const priceInput = row.querySelector('input[name^="price"]');
+    const itemInput = row.querySelector('input[name^="item"]');
+    
+    if (quantityInput && priceInput && itemInput) {
+      const quantity = parseFloat(quantityInput.value) || 0;
+      const price = parseFloat(priceInput.value) || 0;
+      
+      if (quantity > 0) {
+        const itemTotal = quantity * price;
+        selectedItems.push({
+          name: itemInput.value,
+          quantity: quantity,
+          price: price,
+          total: itemTotal
+        });
+      }
+    }
+  });
+  
+  // Store bill data in localStorage
+  const billData = {
+    items: selectedItems,
+    subtotal: parseFloat(document.getElementById('subtotal').textContent) || 0,
+    tax: parseFloat(document.getElementById('tax').textContent) || 0,
+    total: parseFloat(totalValue)
+  };
+  
+  localStorage.setItem('billData', JSON.stringify(billData));
+  
+  window.location.href = 'billing.html';
 }

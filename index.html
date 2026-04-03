@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE BUNKERS ADDA</title>
+    <title>Restaurants Billing</title>
     <link rel="stylesheet" href="kan2.css">
     <style>
 		body {
@@ -52,7 +52,7 @@
 </head>
 <body>
     <div class="container">
-		<center><h1>ಕನ್ನಡಿಗರು <br>THE KANNADIGA'S</h1></center>
+		<center><h1>Zephy Grill</h1></center>
 		
 		<div class="bill-container">
 			<h2>Restaurants Billing System</h2>
@@ -68,16 +68,40 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><input type="text" id="item1" name="item1" value="Hoskote Biryani"></td>
-							<td><input type="number" id="quantity1" name="quantity1" value="1" min="0"></td>
-							<td><input type="number" id="price1" name="price1" value="150.00" readonly></td>
-							<td id="total1">150.00</td>
+							<td class="non-veg"><input type="text" id="item1" name="item1" value="🍗 Hoskote chicken Biryani"></td>
+							<td><input type="number" id="quantity1" name="quantity1" value="0" min="0"></td>
+							<td><input type="number" id="price1" name="price1" value="350.00" readonly></td>
+							<td id="total1">0.00</td>
 						</tr>
 						<tr>
-							<td><input type="text" id="item2" name="item2" value="Chicken Sukka"></td>
-							<td><input type="number" id="quantity2" name="quantity2" value="1" min="0"></td>
+							<td class="non-veg"><input type="text" id="item2" name="item2" value="🍗 Chicken Sukka"></td>
+							<td><input type="number" id="quantity2" name="quantity2" value="0" min="0"></td>
 							<td><input type="number" id="price2" name="price2" value="180.00" readonly></td>
-							<td id="total2">180.00</td>
+							<td id="total2">0.00</td>
+						</tr>
+						<tr>
+							<td class="veg"><input type="text" id="item3" name="item3" value="🥕 Masala Dosa"></td>
+							<td><input type="number" id="quantity3" name="quantity3" value="0" min="0"></td>
+							<td><input type="number" id="price3" name="price3" value="80.00" readonly></td>
+							<td id="total3">0.00</td>
+						</tr>
+						<tr>
+							<td class="veg"><input type="text" id="item4" name="item4" value="🥕 Idli Vada"></td>
+							<td><input type="number" id="quantity4" name="quantity4" value="0" min="0"></td>
+							<td><input type="number" id="price4" name="price4" value="60.00" readonly></td>
+							<td id="total4">0.00</td>
+						</tr>
+						<tr>
+							<td class="veg"><input type="text" id="item5" name="item5" value="🥕 Filter Coffee"></td>
+							<td><input type="number" id="quantity5" name="quantity5" value="0" min="0"></td>
+							<td><input type="number" id="price5" name="price5" value="25.00" readonly></td>
+							<td id="total5">0.00</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="item6" name="item6" value="Chicken Curry"></td>
+							<td><input type="number" id="quantity6" name="quantity6" value="0" min="0"></td>
+							<td><input type="number" id="price6" name="price6" value="120.00" readonly></td>
+							<td id="total6">0.00</td>
 						</tr>
 					</tbody>
 					<tfoot>
@@ -86,7 +110,7 @@
 							<td id="subtotal">0.00</td>
 						</tr>
 						<tr>
-							<td colspan="3">Tax (10%):</td>
+							<td colspan="3">Tax (0.3%):</td>
 							<td id="tax">0.00</td>
 						</tr>
 						<tr>
@@ -104,11 +128,7 @@
     </form>
 </div>
 </div>
-<div>
-	<center><h2>ಎಲ್ಲಾದರು ಇರು, ಎಂತಾದರು ಇರು ಎಂದೆಂದಿಗು ನೀ ಕನ್ನಡವಾಗಿರು ಕನ್ನಡ ಗೋವಿನ ಓ ಮುದ್ದಿನ ಕರು, ಕನ್ನಡತನವೊಂದಿದ್ದರೆ ನೀನಮ್ಮಗೆ ಕಲ್ಪತರು!
-		<br>- ರಾಷ್ಟ್ರಕವಿ ಕುವೆಂಪು💛❤️
-		</h2></center>
-</div>
+
 
 <script src="./script.js" >
 
